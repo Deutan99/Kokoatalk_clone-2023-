@@ -5,14 +5,22 @@
 /* Screens */
 @import "./screens/login.css";
 @import "./screens/friend.css";
+@import "./screens/find.css";
+@import "./screens/more.css";
 
 /* Components */
 @import "./components/stats-bar.css";
 @import "./components/nav-bar.css";
 @import "./components/screen-header.css";
 @import "./components/user-component.css";
+@import "./components/badge.css";
+@import "./components/icon-row.css";
 
 body {
   font-family: "Open Sans", sans-serif;
   color: #2e363e;
 }
+
+.main-screen {
+    padding: 0px 25px;
+} 
