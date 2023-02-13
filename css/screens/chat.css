@@ -1,6 +1,6 @@
 #chat-screen {
     background-color: #abc1d1;
-    height: 11000vh;
+    height: 500vh;
 }
 
 #chat-screen .alt-header,
@@ -19,6 +19,27 @@
 
 #chat-screen .status-bar {
     z-index: 2;
+}
+
+
+@keyframes Send {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes Receive {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        transform:translateX(0);
+        opacity: 1;
+    }
 }
 
 .main-chat {
@@ -41,6 +62,7 @@
     width: 100%;
     display: flex;
     margin-bottom: 25px;
+    animation: Receive 1s linear forwards;
 }
 
 .message-row img {
@@ -78,7 +100,9 @@
 }
 
 .message-row--own {
-    justify-content: flex-end;   
+    justify-content: flex-end;  
+    animation: Send 1s linear forwards;
+    animation-delay: 0.3s; 
 }
 
 .message-row--own .message__bubble {
@@ -91,4 +115,89 @@
 
 .message-row--own .message__info {
     flex-direction: row-reverse;
+}
+
+.reply {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 25px;
+    align-items: center;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+}
+
+.reply .reply__column:first-child {
+    width: 10%;
+}
+
+.reply .reply__column:last-child {
+    width: 90%;
+    position: relative;
+}
+
+.reply i {
+    opacity: 0.5;
+} 
+
+.reply input {
+    padding: 10px;
+    width: 100%;
+    border: var(--main-border);
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.reply__column:last-child > i,
+.reply__column:last-child button {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+
+.reply__column:last-child i {
+    right: 40px;
+    top: 10px;
+}
+
+.reply__column button {
+    background-color: var(--yellow);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.replay__column button i {
+    opacity: 1;
+}
+
+.reply__column button:focus,
+.reply__column button:active {
+    outline: none;
+}
+
+.reply:focus-within .reply__column:first-child,
+.reply:focus-within .fa-face-smile,
+.reply:focus-within button {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.reply:focus-within .reply__column:first-child,
+.reply:focus-within .fa-face-smile,
+.reply:focus-within button {
+    opacity: 0;
+}
+
+.reply input:focus {
+    width: 98vw;
+    transform: translateX(-13%) translateY(-80px);
+}
+
+.reply:focus-within {
+    transform: translateY(80px);
 }
